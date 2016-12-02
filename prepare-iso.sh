@@ -112,10 +112,16 @@ function createISO()
     rm /tmp/${isoName}.sparseimage
 
     echo
-    echo Rename the ISO and move it to the desktop
+    echo Convert cdr to iso
     echo --------------------------------------------------------------------------
-    echo $ mv /tmp/${isoName}.cdr ~/Desktop/${isoName}.iso
-    mv /tmp/${isoName}.cdr ~/Desktop/${isoName}.iso
+    echo $ hdiutil makehybrid -iso -joliet -o /tmp/${isoName}.iso /tmp/${isoName}.cdr
+    hdiutil makehybrid -iso -joliet -o /tmp/${isoName}.iso /tmp/${isoName}.cdr
+
+    echo
+    echo Move it to the desktop
+    echo --------------------------------------------------------------------------
+    echo $ mv /tmp/${isoName}.iso ~/Desktop/${isoName}.iso
+    mv /tmp/${isoName}.iso ~/Desktop/${isoName}.iso
   fi
 }
 
